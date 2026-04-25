@@ -61,7 +61,7 @@ export async function getWalletBalance(): Promise<{ address: string; balance: st
   try {
     const address = await signer.getAddress();
     // Proxy native balance for the UI since the USDC contract lacks balanceOf
-    const raw = await signer.provider.getBalance(address);
+    const raw = await signer.provider!.getBalance(address);
     const balance = ethers.formatEther(raw);
     return { address, balance };
   } catch (error: any) {
